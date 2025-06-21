@@ -20,16 +20,16 @@ This project predicts the price of gold (per gram in INR) using the USD to INR e
 🖥️ Gradio UI for interactive prediction
 
 🗂️ Project Structure
-bash
-Copy
-Edit
-Gold-Price-Prediction/
-├── model.pkl              # Saved ML model
-├── scaler.pkl             # Scaler used for prediction
-├── Gold vs USDINR.csv     # Main dataset
-├── gold_price_predict.py  # Main script for training + UI
-└── README.md              # Project documentation
+
+    Gold-Price-Prediction/
+    ├── model.pkl              # Saved ML model
+    ├── scaler.pkl             # Scaler used for prediction
+    ├── Gold vs USDINR.csv     # Main dataset
+    ├── gold_price_predict.py  # Main script for training + UI
+    └── README.md              # Project documentation
+
 📉 Dataset
+
 Gold vs USDINR.csv: Contains historical data for gold prices and USD/INR exchange rates.
 
 yfinance is used to fetch updated USDINR data weekly from Jan 2024 to Dec 2025.
@@ -47,6 +47,7 @@ pip install yfinance gradio pandas numpy matplotlib seaborn scikit-learn
 
 🧪 How It Works
 1. Data Preprocessing
+
 Loads and cleans Goldrate and USD_INR
 
 Converts gold rate from string (₹) to numeric
@@ -54,12 +55,11 @@ Converts gold rate from string (₹) to numeric
 Handles outliers and scaling
 
 2. Model Training
-python
-Copy
-Edit
+
 from sklearn.linear_model import LinearRegression
 model = LinearRegression()
 model.fit(X_train_scaled, y_train)
+
 Trained using StandardScaler
 
 Evaluated with mean_squared_error
@@ -74,7 +74,6 @@ pickle.dump(model, open("model.pkl", "wb"))
 pickle.dump(scaler, open("scaler.pkl", "wb"))
 
 💻 Gradio Interface
-Launch the UI
 
 import gradio as gr
 
@@ -90,9 +89,9 @@ demo = gr.Interface(
 )
 demo.launch()
 📈 Sample Output
-Input: USD/INR = 80
+Input: USD/INR = 86.58
 
-Predicted Gold Price: ₹[value based on your model]
+Predicted Gold Price: ₹[8402.91]
 
 📌 Future Improvements
 🧠 Use XGBoost or LSTM for better accuracy
